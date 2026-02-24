@@ -78,7 +78,7 @@ function showError(message){
 
 async function loadData(){
     try {
-        const res = await fetch('http://localhost:3000/api/entries')
+        const res = await fetch('/api/entries')
         const data = await res.json();
         const table = document.getElementById("tableBody");
         table.innerHTML = "";
@@ -109,12 +109,12 @@ async function addData(){
         return;
     }
     if(!relative){
-        showError("لطفاً نسبت فامیلی را وارد کنید");
+        showError("لطفاً نسبت فامیلی را وارد کنید"); 
         return;
     }
 
     try {
-        const res = await fetch('http://localhost:3000/api/entries', {
+        const res = await fetch('/api/entries', {
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body: JSON.stringify({type, dayNumber, relative})
@@ -138,7 +138,7 @@ async function addData(){
 
 async function deleteRow(type, dayNumber){
     try {
-        await fetch('http://localhost:3000/api/entries',{
+        await fetch('/api/entries',{
             method:'DELETE',
             headers:{'Content-Type':'application/json'},
             body: JSON.stringify({type, dayNumber})
