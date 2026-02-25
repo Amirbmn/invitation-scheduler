@@ -10,13 +10,12 @@ body {
     margin:0;
     font-family:'Vazirmatn',sans-serif;
     direction:rtl;
-    height:100vh;
+    min-height: 100dvh;
     width:100vw;
     display:flex;
     align-items:center;
     justify-content:center;
 
-    /* اصلاح فقط برای جلوگیری از کش آمدن تصویر */
     background-image:url("haftsin.jpg");
     background-size:cover;
     background-position:center;
@@ -132,14 +131,12 @@ td{
     font-family:'Vazirmatn',sans-serif;
 }
 
-/* ========================= */
-/* 🔥 فقط بخش ریسپانسیو موبایل */
-/* ========================= */
+
 @media (max-width: 768px){
 
     body{
         height:auto;
-        min-height:100vh;
+        min-height:100dvh;
         align-items:flex-start;
         padding:20px 0;
     }
@@ -172,7 +169,7 @@ td{
     }
 
     table{
-        min-width:500px; /* جلوگیری از شکستن جدول */
+        min-width:500px;
     }
 }
 </style>
