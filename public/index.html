@@ -1,305 +1,202 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>برنامه نوروزی</title>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-body {
-    margin:0;
-    font-family:'Vazirmatn',sans-serif;
-    direction:rtl;
-    min-height: 100dvh;
-    width:100vw;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>برنامه نوروزی ۱۴۰۵</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0; font-family: 'Vazirmatn', sans-serif; direction: rtl;
+            min-height: 100dvh; width: 100vw; display: flex; align-items: center; justify-content: center;
+            background: #f0f2f5;
+        }
 
-    background-image:url("haftsin.jpg");
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-}
+        /* استایل فرم ورود */
+        #authOverlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.8);
+            z-index: 1000; display: flex; align-items: center; justify-content: center;
+        }
+        .auth-box {
+            background: white; padding: 30px; border-radius: 20px; text-align: center; width: 300px;
+        }
 
-.container{
-    width:90%;
-    height:90vh;
-    background:rgba(255,255,255,0.15);
-    backdrop-filter: blur(5px);
-    border-radius:25px;
-    display:flex;
-    overflow:hidden;
-    box-shadow:0 20px 50px rgba(0,0,0,0.3);
-}
+        .container {
+            width: 90%; height: 90vh; background: rgba(255,255,255,0.9);
+            border-radius: 25px; display: flex; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
 
-.form-section{
-    flex:2;
-    padding:50px;
-    background-size:cover;
-    background-position:center;
-    position:relative;
-    color:white;
-}
+        .form-section { flex: 2; padding: 40px; background: #0f9b8e; color: white; }
+        .table-section { flex: 3; padding: 40px; overflow-y: auto; }
 
-.overlay{
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,0.45);
-}
+        .form-group { margin-bottom: 15px; }
+        input, select {
+            width: 100%; height: 45px; padding: 0 10px; border-radius: 10px;
+            border: 1px solid #ddd; margin-top: 5px; box-sizing: border-box;
+            font-family: 'Vazirmatn';
+        }
 
-.form-content{
-    position:relative;
-    z-index:2;
-    max-width:320px;
-}
+        button {
+            width: 100%; height: 45px; border: none; border-radius: 10px;
+            background: gold; cursor: pointer; font-weight: bold; margin-top: 10px;
+        }
 
-h1{
-    font-weight:800;
-    margin-bottom:10px;
-}
+        table { width: 100%; border-collapse: collapse; }
+        th { background: #0f9b8e; color: white; padding: 12px; }
+        td { padding: 12px; text-align: center; border-bottom: 1px solid #eee; }
 
-.form-group{
-    margin-bottom:20px;
-}
+        .delete-btn { background: #ff4d4d; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
+        #errorMessage { color: #ff3333; font-size: 13px; margin-bottom: 10px; height: 20px; }
 
-select,input{
-    width:100%;
-    height:50px;
-    padding:0 15px;
-    border:none;
-    border-radius:15px;
-    font-size:15px;
-    font-family:'Vazirmatn',sans-serif;
-    box-sizing:border-box;
-}
-
-button{
-    width:100%;
-    height:50px;
-    border:none;
-    border-radius:20px;
-    background:gold;
-    font-size:16px;
-    font-weight:600;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-button:hover{
-    transform:scale(1.05);
-}
-
-#errorMessage{
-    color:red;
-    font-weight:bold;
-    margin-bottom:20px;
-    height:20px;
-}
-
-.table-section{
-    flex:3;
-    padding:50px;
-    overflow-y:auto;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-th{
-    background:#0f9b8e;
-    color:white;
-    padding:15px;
-    font-weight:600;
-}
-
-td{
-    padding:15px;
-    text-align:center;
-    border-bottom:1px solid #eee;
-}
-
-.delete-btn{
-    background:red;
-    color:white;
-    border:none;
-    padding:6px 15px;
-    border-radius:10px;
-    cursor:pointer;
-    font-family:'Vazirmatn',sans-serif;
-}
-
-
-@media (max-width: 768px){
-
-    body{
-        height:auto;
-        min-height:100dvh;
-        align-items:flex-start;
-        padding:20px 0;
-    }
-
-    .container{
-        flex-direction:column;
-        height:auto;
-        width:95%;
-        border-radius:20px;
-    }
-
-    .form-section{
-        flex:none;
-        padding:30px 25px;
-    }
-
-    .table-section{
-        flex:none;
-        padding:30px 15px;
-        overflow-x:auto;
-    }
-
-    h1{
-        font-size:20px;
-    }
-
-    select,input,button{
-        height:45px;
-        font-size:14px;
-    }
-
-    table{
-        min-width:500px;
-    }
-}
-</style>
+        @media (max-width: 768px) {
+            .container { flex-direction: column; height: auto; }
+            .form-section, .table-section { flex: none; width: 100%; padding: 20px; box-sizing: border-box; }
+        }
+    </style>
 </head>
 <body>
 
+<div id="authOverlay">
+    <div class="auth-box">
+        <h2>ورود / ثبت‌نام</h2>
+        <p>لطفاً نام خود را وارد کنید</p>
+        <input type="text" id="usernameInput" placeholder="نام و نام خانوادگی">
+        <button onclick="login()">ورود به برنامه</button>
+    </div>
+</div>
+
 <div class="container">
-
     <div class="form-section">
-        <div class="overlay"></div>
-        <div class="form-content">
-            <h1>برنامه نوروزی ۱۴۰۵</h1>
-            <div id="errorMessage"></div>
-
-            <div class="form-group">
-                <select id="type">
-                    <option value="روز">روز</option>
-                    <option value="شب">شب</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <input type="number" id="dayNumber" placeholder="عدد روز (۱ تا ۱۵)" min="1" max="15">
-            </div>
-
-            <div class="form-group">
-                <input type="text" id="relative" placeholder="نسبت فامیلی">
-            </div>
-
-            <button onclick="addData()" style="font-family:'Vazirmatn',sans-serif">افزودن</button>
+        <h1>برنامه نوروزی</h1>
+        <p id="welcomeMsg"></p>
+        <div id="errorMessage"></div>
+        
+        <div class="form-group">
+            <label>زمان:</label>
+            <select id="type">
+                <option value="روز">روز</option>
+                <option value="شب">شب</option>
+            </select>
         </div>
+        <div class="form-group">
+            <label>روز (۱ تا ۱۵ فروردین):</label>
+            <input type="number" id="dayNumber" min="1" max="15">
+        </div>
+        <div class="form-group">
+            <label>توضیحات / نسبت:</label>
+            <input type="text" id="relative">
+        </div>
+        <button onclick="addData()">ثبت در جدول</button>
+        <button onclick="logout()" style="background:#eee; color:#333; margin-top:20px;">خروج</button>
     </div>
 
     <div class="table-section">
         <table>
             <thead>
                 <tr>
-                    <th>نوع</th>
+                    <th>زمان</th>
                     <th>تاریخ</th>
-                    <th>نسبت فامیلی</th>
-                    <th>حذف</th>
+                    <th>توضیحات</th>
+                    <th>ثبت‌کننده</th>
+                    <th>عملیات</th>
                 </tr>
             </thead>
             <tbody id="tableBody"></tbody>
         </table>
     </div>
-
 </div>
 
 <script>
-function showError(message){
-    const errorDiv = document.getElementById("errorMessage");
-    errorDiv.textContent = message;
-    setTimeout(()=>{ errorDiv.textContent = ""; }, 3000);
-}
+    let currentUser = localStorage.getItem("username");
+    const API_URL = 'https://noruz.pxxl.click/api/entries';
 
-async function loadData(){
-    try {
-        const res = await fetch('https://noruz.pxxl.click/api/entries')
-        const data = await res.json();
-        const table = document.getElementById("tableBody");
-        table.innerHTML = "";
-
-        data.forEach(item => {
-            const fullDate = "1405/01/" + String(item.dayNumber).padStart(2,'0');
-            const row = document.createElement("tr");
-            row.innerHTML = `
-                <td>${item.type}</td>
-                <td>${fullDate}</td>
-                <td>${item.relative}</td>
-                <td><button class="delete-btn" onclick="deleteRow('${item.type}',${item.dayNumber})">حذف</button></td>
-            `;
-            table.appendChild(row);
-        });
-    } catch (err) {
-        showError("خطا در بارگذاری داده‌ها");
-    }
-}
-
-async function addData(){
-    const type = document.getElementById("type").value;
-    const dayNumber = parseInt(document.getElementById("dayNumber").value);
-    const relative = document.getElementById("relative").value.trim();
-
-    if(!dayNumber || dayNumber < 1 || dayNumber > 15){
-        showError("عدد باید بین ۱ تا ۱۵ باشد");
-        return;
-    }
-    if(!relative){
-        showError("لطفاً نسبت فامیلی را وارد کنید"); 
-        return;
-    }
-
-    try {
-        const res = await fetch('https://noruz.pxxl.click/api/entries', {
-            method:'POST',
-            headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({type, dayNumber, relative})
-        });
-
-        if(!res.ok){
-            const err = await res.json();
-            showError(err.error);
-            return;
+    function checkAuth() {
+        if (currentUser) {
+            document.getElementById("authOverlay").style.display = "none";
+            document.getElementById("welcomeMsg").textContent = `خوش آمدید، ${currentUser}`;
+            loadData();
         }
-
-        document.getElementById("dayNumber").value="";
-        document.getElementById("relative").value="";
-        document.getElementById("type").value = "روز";
-
-        loadData();
-    } catch (err) {
-        showError("خطا در افزودن داده");
     }
-}
 
-async function deleteRow(type, dayNumber){
-    try {
-        await fetch('https://noruz.pxxl.click/api/entries',{
-            method:'DELETE',
-            headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({type, dayNumber})
-        });
-        loadData();
-    } catch (err) {
-        showError("خطا در حذف داده");
+    function login() {
+        const name = document.getElementById("usernameInput").value.trim();
+        if (name) {
+            localStorage.setItem("username", name);
+            currentUser = name;
+            checkAuth();
+        }
     }
-}
 
-window.onload = loadData;
+    function logout() {
+        localStorage.removeItem("username");
+        location.reload();
+    }
+
+    function showError(msg) {
+        const div = document.getElementById("errorMessage");
+        div.textContent = msg;
+        setTimeout(() => div.textContent = "", 3000);
+    }
+
+    async function loadData() {
+        try {
+            const res = await fetch(API_URL);
+            const data = await res.json();
+            const table = document.getElementById("tableBody");
+            table.innerHTML = "";
+
+            data.forEach(item => {
+                const row = document.createElement("tr");
+                const isOwner = item.username === currentUser;
+                row.innerHTML = `
+                    <td>${item.type}</td>
+                    <td>1405/01/${String(item.dayNumber).padStart(2, '0')}</td>
+                    <td>${item.relative}</td>
+                    <td>${item.username}</td>
+                    <td>
+                        ${isOwner ? `<button class="delete-btn" onclick="deleteRow('${item.type}', ${item.dayNumber})">حذف</button>` : '-'}
+                    </td>
+                `;
+                table.appendChild(row);
+            });
+        } catch { showError("خطا در دریافت اطلاعات"); }
+    }
+
+    async function addData() {
+        const type = document.getElementById("type").value;
+        const dayNumber = document.getElementById("dayNumber").value;
+        const relative = document.getElementById("relative").value.trim();
+
+        if (!dayNumber || !relative) return showError("فیلدها را پر کنید");
+
+        try {
+            const res = await fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ type, dayNumber, relative, username: currentUser })
+            });
+
+            if (!res.ok) {
+                const err = await res.json();
+                return showError(err.error);
+            }
+            loadData();
+        } catch { showError("خطا در ثبت"); }
+    }
+
+    async function deleteRow(type, dayNumber) {
+        if (!confirm("آیا مطمئن هستید؟")) return;
+        try {
+            await fetch(API_URL, {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ type, dayNumber, username: currentUser })
+            });
+            loadData();
+        } catch { showError("خطا در حذف"); }
+    }
+
+    window.onload = checkAuth;
 </script>
 
 </body>
