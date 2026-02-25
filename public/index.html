@@ -1,132 +1,72 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>برنامه نوروزی</title>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-    /* تنظیمات پایه */
-    body { 
-        margin:0; 
-        font-family:'Vazirmatn',sans-serif; 
-        direction:rtl; 
-        min-height:100vh; 
-        display:flex; 
-        align-items:center; 
-        justify-content:center; 
-        background-image:url("haftsin.jpg"); 
-        background-size:cover; 
-        background-position:center;
-        background-attachment: fixed;
-    }
-
-    /* ظرف اصلی با قابلیت واکنش‌گرایی */
-    .container {
-        width:95%; 
-        max-width: 1000px;
-        min-height:80vh; 
-        background:rgba(255,255,255,0.1); 
-        backdrop-filter: blur(12px); 
-        -webkit-backdrop-filter: blur(12px);
-        border-radius:25px; 
-        display:flex; 
-        flex-direction: row; /* پیش‌فرض دسکتاپ */
-        overflow:hidden; 
-        box-shadow:0 20px 50px rgba(0,0,0,0.3);
-        margin: 20px 0;
-    }
-
-    /* بخش فرم */
-    .form-section {
-        flex:1; 
-        padding:30px; 
-        position:relative; 
-        color:white;
-        border-left: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .form-content { position:relative; z-index:2; }
-    h1 { font-size: 24px; font-weight:800; margin-bottom:20px; text-align: center; }
-    
-    .form-group { margin-bottom:15px; }
-    select, input { 
-        width:100%; height:45px; padding:0 15px; border:none; border-radius:12px; 
-        font-size:14px; font-family:'Vazirmatn',sans-serif; box-sizing:border-box;
-        background: rgba(255,255,255,0.9);
-    }
-
-    button { 
-        width:100%; height:45px; border:none; border-radius:12px; 
-        font-size:16px; font-weight:600; cursor:pointer; transition:0.3s;
-    }
-
-    .addDataButton{
-        font-family: 'Vazirmatn',sans-serif;
-        background-color: yellow;
-    }
-
-    .addDataButton:hover{
-        background-color: rgb(255, 255, 0);
-    }
-    button:hover { transform:scale(1.02);background-color: red; }
-
-    #errorMessage { color:#ff4d4d; font-size: 13px; font-weight:bold; margin-bottom:10px; height:20px; text-align: center;}
-
-    /* بخش جدول */
-    .table-section { flex:1.5; padding:30px; overflow-y:auto; background: rgba(255,255,255,0.05); }
-    table { width:100%; border-collapse:collapse; color: white; }
-    th { background:rgba(15, 155, 142, 0.8); color:white; padding:12px; font-weight:600; font-size: 14px; }
-    td { padding:12px; text-align:center; border-bottom:1px solid rgba(255,255,255,0.1); font-size: 13px; }
-    
-    .delete-btn { background:#da0e0e; color:white; border:none; padding:5px 12px; border-radius:8px; cursor:pointer; }
-
-    /* مِدیا کوئری برای موبایل */
-    @media (max-width: 768px) {
-        .container {
-            flex-direction: column; /* تغییر چیدمان به عمودی */
-            height: auto;
-            margin: 10px;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>برنامه نوروزی ۱۴۰۵</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; font-family: 'Vazirmatn', sans-serif; }
+        body { 
+            margin: 0; padding: 10px; direction: rtl; min-height: 100vh;
+            background: #f4f7f6; display: flex; justify-content: center; align-items: flex-start;
         }
-        .form-section { border-left: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .table-section { padding: 15px; }
-        table { font-size: 12px; }
-        th, td { padding: 8px; }
-    }
-</style>
+
+        .container {
+            width: 100%; max-width: 900px; background: #fff;
+            display: flex; flex-direction: row; /* حالت دسکتاپ */
+            border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .form-side { flex: 1; padding: 30px; background: #2c3e50; color: white; }
+        .table-side { flex: 1.5; padding: 20px; background: #fff; overflow-x: auto; }
+
+        h1 { font-size: 1.5rem; text-align: center; margin-bottom: 25px; }
+        input, select, button { 
+            width: 100%; height: 50px; margin-bottom: 15px; 
+            border-radius: 12px; border: 1px solid #ddd; padding: 0 15px; font-size: 16px;
+        }
+
+        button { 
+            background: #f1c40f; border: none; font-weight: bold; cursor: pointer;
+            transition: 0.2s; color: #2c3e50;
+        }
+        button:active { transform: scale(0.98); }
+
+        table { width: 100%; border-collapse: collapse; min-width: 350px; }
+        th { background: #16a085; color: white; padding: 12px; font-size: 14px; }
+        td { padding: 12px; border-bottom: 1px solid #eee; text-align: center; font-size: 14px; }
+
+        .btn-delete { background: #e74c3c; color: white; padding: 5px 12px; border-radius: 8px; font-size: 12px; }
+
+        /* موبایل (صفحه نمایش کوچک) */
+        @media (max-width: 768px) {
+            .container { flex-direction: column; }
+            .form-side { padding: 20px; }
+            .table-side { padding: 10px; }
+            h1 { font-size: 1.2rem; }
+        }
+    </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="form-section">
-        <div class="form-content">
-            <h1>برنامه نوروزی ۱۴۰۵</h1>
-            <div id="errorMessage"></div>
-
-            <div class="form-group">
-                <select id="type">
-                    <option value="روز">روز</option>
-                    <option value="شب">شب</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <input type="number" id="dayNumber" placeholder="عدد روز (۱ تا ۱۵)" min="1" max="15">
-            </div>
-
-            <div class="form-group">
-                <input type="text" id="relative" placeholder="نسبت فامیلی">
-            </div>
-
-            <button class="addDataButton" onclick="addData()" >افزودن به لیست</button>
-        </div>
+    <div class="form-side">
+        <h1>📅 برنامه نوروز</h1>
+        <select id="type">
+            <option value="روز">☀️ ناهار (روز)</option>
+            <option value="شب">🌙 شام (شب)</option>
+        </select>
+        <input type="number" id="dayNumber" placeholder="عدد روز (۱ تا ۱۵)" min="1" max="15">
+        <input type="text" id="relative" placeholder="نام مهمان / نسبت فامیلی">
+        <button onclick="addData()">افزودن به لیست</button>
     </div>
 
-    <div class="table-section">
+    <div class="table-side">
         <table>
             <thead>
                 <tr>
-                    <th>نوع</th>
+                    <th>زمان</th>
                     <th>تاریخ</th>
                     <th>مهمان</th>
                     <th>حذف</th>
@@ -138,80 +78,57 @@
 </div>
 
 <script>
-const API_URL = 'https://noruz.pxxl.click/api/entries';
+    const API_URL = 'https://noruz.pxxl.click/api/entries';
 
-function showError(message){
-    const errorDiv = document.getElementById("errorMessage");
-    errorDiv.textContent = message;
-    setTimeout(()=>{ errorDiv.textContent = ""; }, 3000);
-}
-
-async function loadData(){
-    try {
-        const res = await fetch(API_URL);
-        const data = await res.json();
-        const table = document.getElementById("tableBody");
-        table.innerHTML = "";
-
-        data.forEach(item => {
-            const fullDate = "01/" + String(item.dayNumber).padStart(2,'0');
-            const row = document.createElement("tr");
-            row.innerHTML = `
-                <td>${item.type}</td>
-                <td>${fullDate}</td>
-                <td>${item.relative}</td>
-                <td><button class="delete-btn" onclick="deleteRow('${item.type}',${item.dayNumber})">×</button></td>
-            `;
-            table.appendChild(row);
-        });
-    } catch (err) {
-        showError("خطا در بارگذاری");
+    async function loadData() {
+        try {
+            const res = await fetch(API_URL);
+            const data = await res.json();
+            const table = document.getElementById("tableBody");
+            table.innerHTML = data.map(item => `
+                <tr>
+                    <td>${item.type}</td>
+                    <td>01/${String(item.dayNumber).padStart(2, '0')}</td>
+                    <td>${item.relative}</td>
+                    <td><button class="btn-delete" onclick="deleteRow('${item.type}',${item.dayNumber})">حذف</button></td>
+                </tr>
+            `).join('');
+        } catch (e) { alert("خطا در بارگذاری لیست"); }
     }
-}
 
-async function addData(){
-    const type = document.getElementById("type").value;
-    const dayNumber = parseInt(document.getElementById("dayNumber").value);
-    const relative = document.getElementById("relative").value.trim();
+    async function addData() {
+        const type = document.getElementById("type").value;
+        const dayNumber = document.getElementById("dayNumber").value;
+        const relative = document.getElementById("relative").value;
 
-    if(!dayNumber || dayNumber < 1 || dayNumber > 15) { showError("روز معتبر نیست"); return; }
-    if(!relative) { showError("نام را وارد کنید"); return; }
+        if(!dayNumber || !relative) return alert("لطفا تمام فیلدها را پر کنید");
 
-    try {
         const res = await fetch(API_URL, {
-            method:'POST',
-            headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({type, dayNumber, relative})
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ type, dayNumber, relative })
         });
 
-        if(!res.ok){
+        if (res.ok) {
+            document.getElementById("relative").value = "";
+            loadData();
+        } else {
             const err = await res.json();
-            showError(err.error);
-            return;
+            alert(err.error);
         }
-
-        document.getElementById("dayNumber").value="";
-        document.getElementById("relative").value="";
-        loadData();
-    } catch (err) {
-        showError("خطا در ارتباط با سرور");
     }
-}
 
-async function deleteRow(type, dayNumber){
-    try {
-        await fetch(API_URL,{
-            method:'DELETE',
-            headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({type, dayNumber})
+    async function deleteRow(type, dayNumber) {
+        if(!confirm("آیا از حذف مطمئن هستید؟")) return;
+        await fetch(API_URL, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ type, dayNumber })
         });
         loadData();
-    } catch (err) {
-        showError("خطا در حذف");
     }
-}
 
-window.onload = loadData;
+    window.onload = loadData;
 </script>
 
 </body>
