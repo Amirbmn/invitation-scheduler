@@ -1,6 +1,10 @@
 📅 Noruz 1405 Scheduler
 A lightweight, full-stack web application designed for families to coordinate their holiday visits and hosting schedule during the Noruz 1405 vacations.
 
+🚀 Live Demo
+You can access the live application directly via your browser:
+https://noruz.pxxl.click
+
 ✨ Features
 Dual-Shift Calendar: 14-day view (1 to 14 Farvardin) with Day and Night slots.
 
@@ -27,31 +31,46 @@ Ensure you have Node.js installed.
 
 2. Installation
 Clone the repository:
-
-Bash
 git clone https://github.com/Amirbmn/noruz-scheduler.git
 cd noruz-scheduler
 Install dependencies:
-
-Bash
 npm install
+
 3. Configuration
 Ensure the API_URL in the <script> tag of index.html matches your server address:
-
-JavaScript
 const API_URL = 'http://localhost:3000/api/entries';
+
 4. Running the App
 Start the server:
 
-Bash
 node server.js
 The application will be available at http://localhost:3000.
 
+
+📦 Dependencies & Setup (package.json)
+This project uses Node.js and Express for the backend logic.
+
+Core Dependencies:
+
+express: The web framework used to handle API requests and serve static files.
+
+cors: Middleware to enable Cross-Origin Resource Sharing, allowing the frontend to communicate with the API.
+
+Engines: * Optimized for Node.js 16.x or higher.
+
+Available Scripts:
+
+npm start: Runs the server using node server.js.
+
+
 📁 Project Structure
-server.js: Express server and REST API endpoints.
 
 public/index.html: The main UI and frontend logic.
 
+public/haftsin.jpg: Background image.
+
 data.json: Storage file for reservation entries.
 
-public/haftsin.jpg: Background image.
+server.js: Express server and REST API endpoints.
+
+package.json
