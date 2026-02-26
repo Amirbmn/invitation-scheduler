@@ -31,7 +31,7 @@ Ensure you have Node.js installed.
 
 2. Installation
 Clone the repository:
-git clone https://github.com/Amirbmn/noruz-scheduler.git
+git clone https://github.com/Amirbmn/invitation-scheduler.git
 cd noruz-scheduler
 Install dependencies:
 npm install
