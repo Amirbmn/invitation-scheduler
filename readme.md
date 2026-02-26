@@ -1,9 +1,6 @@
 📅 Noruz 1405 Scheduler
 A lightweight, full-stack web application designed for families to coordinate their holiday visits and hosting schedule during the Noruz 1405 vacations.
 
-🚀 Live Demo
-You can access the live application directly via your browser:
-https://noruz.pxxl.click
 
 ✨ Features
 Dual-Shift Calendar: 14-day view (1 to 14 Farvardin) with Day and Night slots.
