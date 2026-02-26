@@ -25,6 +25,9 @@ Database: Local JSON file (data.json).
 
 Design: Vazirmatn Persian font, Backdrop-blur effects.
 
+🔐 Admin Access
+Users who log in with the username admin gain full control over the schedule, including the ability to delete any entry regardless of who created it.
+
 🚀 Quick Start
 1. Prerequisites
 Ensure you have Node.js installed.
