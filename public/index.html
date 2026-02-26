@@ -176,15 +176,15 @@ async function loadData() {
         const tableBody = document.getElementById("tableBody");
         tableBody.innerHTML = "";
 
-        // تعریف روزهای هفته برای نمایش بهتر
+        
         const weekDays = ["جمعه", "شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه"];
         
-        // ایجاد ردیف‌ها از ۱ تا ۱۴ فروردین
+       
         for (let i = 1; i <= 14; i++) {
-            const dayName = weekDays[i % 7]; // محاسبه تقریبی روز هفته
+            const dayName = weekDays[i % 7]; 
             const dateStr = `1405/01/${String(i).padStart(2, '0')}`;
             
-            // پیدا کردن داده‌های ثبت شده برای این روز
+            
             const dayEntry = data.find(item => item.dayNumber == i && item.type === "روز");
             const nightEntry = data.find(item => item.dayNumber == i && item.type === "شب");
 
@@ -196,7 +196,7 @@ async function loadData() {
                     ${dayEntry ? `
                         <div class="entry-box">
                             <span>${dayEntry.relative}</span>
-                            ${dayEntry.username === currentUser ? 
+                            ${dayEntry.username === currentUser||currentUser==='admin' ? 
                                 `<button class="del-small" onclick="deleteRow('روز', ${i})">×</button>` : ''}
                         </div>
                     ` : '<span style="color:#ccc;">---</span>'}
@@ -206,7 +206,7 @@ async function loadData() {
                     ${nightEntry ? `
                         <div class="entry-box">
                             <span>${nightEntry.relative} </span>
-                            ${nightEntry.username === currentUser ? 
+                            ${nightEntry.username === currentUser||currentUser==='admin' ? 
                                 `<button class="del-small" onclick="deleteRow('شب', ${i})">×</button>` : ''}
                         </div>
                     ` : '<span style="color:#ccc;">---</span>'}

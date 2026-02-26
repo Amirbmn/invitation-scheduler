@@ -54,10 +54,16 @@ app.delete('/api/entries', (req, res) => {
         const { type, dayNumber, username } = req.body;
         let data = JSON.parse(fs.readFileSync(DATA_FILE, "utf8"));
 
-        // فقط اجازه حذف ردیفی را می‌دهد که نام کاربر مطابقت داشته باشد
-        const newData = data.filter(x => 
-            !(x.type === type && x.dayNumber === Number(dayNumber) && x.username === username)
-        );
+        const newData = data.filter(x => {
+            const isMatch = x.type === type && x.dayNumber === Number(dayNumber);
+            if (isMatch) {
+                
+                if (username === 'admin' || x.username === username) {
+                    return false;
+                }
+            }
+            return true; 
+        });
 
         fs.writeFileSync(DATA_FILE, JSON.stringify(newData, null, 2));
         res.json({ success: true });
